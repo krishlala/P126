@@ -39,7 +39,7 @@ function play()
 function stop()
 {
     never.stop();
-    harryp.play();
+    harryp.stop();
 }
 
 function gotPoses(results) {
