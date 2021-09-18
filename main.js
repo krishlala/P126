@@ -2,7 +2,7 @@ never = "";
 harryp = "";
 rightWristY=0;
 leftWristY=0;
-
+name = document.getElementById("name").value;
 
 function setup() {
     canvas = createCanvas(600, 500);
@@ -58,8 +58,10 @@ function gotPoses(results) {
 function music() {
     if(leftWristY > rightWristY) {
     never.play();
+    name = "Never Gonna Give You Up";
     } else {
         harryp.play();
+        name = "Harry Potter Theme";
     }
 }
 
