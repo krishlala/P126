@@ -17,6 +17,10 @@ function draw() {
 
 }
 
+function modelLoaded() {
+    console.log('PoseNet is Initialized!');
+}
+
 function preload() {
     never = loadSound("music.mp3");
     harryp = loadSound("Never Gonna Give You Up Original.mp3");
