@@ -16,16 +16,18 @@ function draw() {
 
 function preload() {
     never = loadSound("music.mp3");
-    harryp = loadSound("music.mp3");
+    harryp = loadSound("Never Gonna Give You Up Original.mp3");
     
 }
 
 function play()
 {
-    song.play();
+    never.play();
+    harryp.play();
 }
 
 function stop()
 {
-    song.stop();
+    never.stop();
+    harryp.play();
 }
