@@ -22,3 +22,9 @@ body{
     font-size: 22px;
     margin: 15px;
 }
+
+
+canvas{
+    border: 5px solid white;
+    border-radius: 20px;
+}
