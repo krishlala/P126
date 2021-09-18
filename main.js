@@ -1,5 +1,8 @@
 never = "";
 harryp = "";
+rightWristY=0;
+leftWristY=0;
+
 
 function setup() {
     canvas = createCanvas(600, 500);
