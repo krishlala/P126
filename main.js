@@ -60,8 +60,14 @@ function music() {
     never.play();
     name = "Never Gonna Give You Up";
     } else {
-        harryp.play();
-        name = "Harry Potter Theme";
+    }
+}
+
+
+if(leftWristY < rightWristY) {
+    harryp.play();
+    name = "Harry Potter Theme Song";
+    } else {
     }
 }
 
