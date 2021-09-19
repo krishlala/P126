@@ -61,7 +61,6 @@ function music() {
     name = "Never Gonna Give You Up";
     } else {
     }
-}
 
 
 if(leftWristY < rightWristY) {
@@ -70,5 +69,3 @@ if(leftWristY < rightWristY) {
     } else {
     }
 }
-}
-
