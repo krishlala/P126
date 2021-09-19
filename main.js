@@ -70,6 +70,5 @@ if(leftWristY < rightWristY) {
     } else {
     }
 }
-
-
+}
 
