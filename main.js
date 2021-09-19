@@ -56,14 +56,14 @@ function gotPoses(results) {
 
 
 function music() {
-    if(leftWristY > 250) {
+    if(leftWristY < 250) {
     never.play();
     name = "Never Gonna Give You Up";
     } else {
     }
 
 
-if(250 < rightWristY) {
+if(250 > rightWristY) {
     harryp.play();
     name = "Harry Potter Theme Song";
     } else {
