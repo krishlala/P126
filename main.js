@@ -16,9 +16,9 @@ function setup() {
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
-  music_status = music.isPlaying();
+  music_status = never.isPlaying();
 
-
+score_leftwrist = results[0].pose.keypoints[9].score;
 function draw() {
     image(video, 0, 0, 600, 500);
     if(score_leftwrist > 0.2) {
