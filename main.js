@@ -1,8 +1,11 @@
-never = "";
-harryp = "";
-rightWristY=0;
-leftWristY=0;
-name = document.getElementById("name").value;
+var never = "";
+var harryp = "";
+var rightWristY=0;
+var rightWristX=0;
+var leftWristY=0;
+var leftWristX=0;
+var name = document.getElementById("name").value;
+var song_status = 0;
 
 function setup() {
     canvas = createCanvas(600, 500);
@@ -14,19 +17,38 @@ function setup() {
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
+song_status = never.isPlaying();
+
 
 function draw() {
     image(video, 0, 0, 600, 500);
+    if(score_leftwrist > 0.2) {
 
+    
+    fill('red');
+    stroke('red');
+    circle(leftWristX, leftWristY, 20);
+    InNumberleftWristY = Number(leftWristY);
+    removedecimal = floor(InNumberleftWristY);
+    volume = removedecimal/500;
+    document.getElementById("volume").innerHTML = "Volume = " + volume;
+    never.setVolume(volume);
+    }
+    
+    if(song_status == false) {
+        music.play();
+        document.getElementById("name").innerHTML = "Song Name = " + "Never Gonna Give You Up.";
+    }
 }
+
 
 function modelLoaded() {
     console.log('PoseNet is Initialized!');
 }
 
 function preload() {
-    never = loadSound("music.mp3");
-    harryp = loadSound("Never Gonna Give You Up Original.mp3");
+    harryp = loadSound("music.mp3");
+    never = loadSound("Never Gonna Give You Up Original.mp3");
     
 }
 
@@ -51,21 +73,5 @@ function gotPoses(results) {
         rightWristY = results[0].pose.rightWrist.y;
         console.log("leftWristY = " + leftWristY + "rightWristY" + rightWristY);
 
-    }
-}
-
-
-function music() {
-    if(leftWristY < 250) {
-    never.play();
-    name = "Never Gonna Give You Up";
-    } else {
-    }
-
-
-if(250 > rightWristY) {
-    harryp.play();
-    name = "Harry Potter Theme Song";
-    } else {
     }
 }
