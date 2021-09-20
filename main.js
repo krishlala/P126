@@ -1,48 +1,48 @@
-var never = "";
-var harryp = "";
-var rightWristY=0;
-var rightWristX=0;
-var leftWristY=0;
-var leftWristX=0;
-var name = document.getElementById("name").value;
+never = "";
+harryp = "";
+rightWristY=0;
+rightWristX=0;
+leftWristY=0;
+leftWristX=0;
+scoreRightWrist = 0;
+scoreLeftWrist = 0;
+
+
+
 
 function setup() {
-    canvas = createCanvas(600, 500);
-    canvas.center();
+	canvas =  createCanvas(600, 500);
+	canvas.center();
 
-    video = createCapture(VIDEO);
-    video.hide();
-    
-    poseNet = ml5.poseNet(video, modelLoaded);
-    poseNet.on('pose', gotPoses);
+	video = createCapture(VIDEO);
+	video.hide();
+
+	poseNet = ml5.poseNet(video, modelLoaded);
+	poseNet.on('pose', gotPoses);
 }
+
   music_status = never.isPlaying();
 
-score_leftwrist = results[0].pose.keypoints[9].score;
 function draw() {
-    image(video, 0, 0, 600, 500);
-    if(score_leftwrist > 0.2) {
+	image(video, 0, 0, 600, 500);
 
-    
-    fill('red');
-    stroke('red');
-    circle(leftWristX, leftWristY, 20);
-    InNumberleftWristY = Number(leftWristY);
-    removedecimal = floor(InNumberleftWristY);
-    volume = removedecimal/500;
-    document.getElementById("volume").innerHTML = "Volume = " + volume;
-    never.setVolume(volume);
-    }
-    
-    if(song_status == false) {
-        music.play();
-        document.getElementById("name").innerHTML = "Song Name = " + "Never Gonna Give You Up.";
-    }
+	fill("#FF0000");
+	stroke("#FF0000");
+
+	if(scoreLeftWrist > 0.2)
+	{
+		circle(leftWristX,leftWristY,20);
+		InNumberleftWristY = Number(leftWristY);
+		new_leftWristY = floor(InNumberleftWristY *2);
+		leftWristY_divide_1000 = new_leftWristY/1000;
+		document.getElementById("volume").innerHTML = "Volume = " + leftWristY_divide;		
+		song.setVolume(leftWristY_divide);	
+	}
 }
 
 
 function modelLoaded() {
-    console.log('PoseNet is Initialized!');
+  console.log('PoseNet Is Initialized');
 }
 
 function preload() {
@@ -53,8 +53,10 @@ function preload() {
 
 function play()
 {
-    never.play();
-    harryp.play();
+	never.play();
+	never.setVolume(1);
+	never.rate(1);
+    
 }
 
 function stop()
@@ -63,13 +65,19 @@ function stop()
     harryp.stop();
 }
 
-function gotPoses(results) {
-    if(results.length > 0)
-    {
-        console.log(results);
-        leftWristY = results[0].pose.leftWrist.y;
-        rightWristY = results[0].pose.rightWrist.y;
-        console.log("leftWristY = " + leftWristY + "rightWristY" + rightWristY);
-
-    }
+function gotPoses(results)
+{
+  if(results.length > 0)
+  {
+	scoreRightWrist =  results[0].pose.keypoints[9].score;
+	scoreLeftWrist =  results[0].pose.keypoints[10].score;
+	console.log("scoreRightWrist = " + scoreRightWrist + " scoreLeftWrist = " + scoreLeftWrist);
+	rightWristX = results[0].pose.rightWrist.x;
+	rightWristY = results[0].pose.rightWrist.y;
+    leftWristX = results[0].pose.leftWrist.x;
+	leftWristY = results[0].pose.leftWrist.y;
+	console.log("rightWristX = " + rightWristX +" rightWristY = "+ rightWristY);
+	console.log("leftWristX = " + leftWristX +" leftWristY = "+ leftWristY);
+		
+  }
 }
