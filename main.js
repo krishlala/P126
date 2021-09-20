@@ -16,7 +16,7 @@ function setup() {
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
-  music_status = never.isPlaying();
+  music_status = music.isPlaying();
 
 
 function draw() {
