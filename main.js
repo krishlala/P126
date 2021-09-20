@@ -5,7 +5,6 @@ var rightWristX=0;
 var leftWristY=0;
 var leftWristX=0;
 var name = document.getElementById("name").value;
-var song_status = 0;
 
 function setup() {
     canvas = createCanvas(600, 500);
@@ -17,7 +16,7 @@ function setup() {
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
-song_status = never.isPlaying();
+  music_status = never.isPlaying();
 
 
 function draw() {
