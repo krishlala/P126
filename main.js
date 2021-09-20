@@ -68,7 +68,6 @@ function gotPoses(results) {
     if(results.length > 0)
     {
         console.log(results);
-        music();
         leftWristY = results[0].pose.leftWrist.y;
         rightWristY = results[0].pose.rightWrist.y;
         console.log("leftWristY = " + leftWristY + "rightWristY" + rightWristY);
