@@ -22,6 +22,7 @@ function setup() {
 }
 
   music_status = never.isPlaying();
+  song_music = harryp.isPlaying();
 
 function draw() {
 	image(video, 0, 0, 600, 500);
@@ -32,7 +33,25 @@ function draw() {
 	if(scoreLeftWrist > 0.2)
 	{
 		circle(leftWristX,leftWristY,20);
+		harryp.stop();
+		
+		if(song_status == false)
+		{
 		never.play();
+		document.getElementById("name").innerHTML = "Song Name = Never Gonna Give You Up!";
+		}
+	}
+	
+	if(scoreRightWrist > 0.2)
+	{
+		circle(rightWristX,rightWristY,20);
+		never.stop();
+		
+		if(music_status == false)
+		{
+		harryp.play();
+		document.getElementById("name").innerHTML = "Song Name = Harry Potter Theme Song!";
+		}
 	}
 }
 
@@ -70,7 +89,7 @@ function gotPoses(results)
 	console.log("scoreRightWrist = " + scoreRightWrist + " scoreLeftWrist = " + scoreLeftWrist);
 	rightWristX = results[0].pose.rightWrist.x;
 	rightWristY = results[0].pose.rightWrist.y;
-    leftWristX = results[0].pose.leftWrist.x;
+    	leftWristX = results[0].pose.leftWrist.x;
 	leftWristY = results[0].pose.leftWrist.y;
 	console.log("rightWristX = " + rightWristX +" rightWristY = "+ rightWristY);
 	console.log("leftWristX = " + leftWristX +" leftWristY = "+ leftWristY);
